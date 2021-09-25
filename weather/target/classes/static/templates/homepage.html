@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="../jquary/route_map_form.js"></script>
+    <script src="../jquary/modal-forms.js"></script>
+    <script src="../jquary/utils.js"></script>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+
+<div class="container">
+    <br />
+    <br />
+    <h2 align="center">Add Route</h2>
+    <div class="form-group">
+        <form name="add_name" id="add_name">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dynamic_field">
+                    <tr>
+                        <td>
+                            <input id = "cityText" type="text" name="city" placeholder="Enter city" class="form-control name_list" minlength="4" maxlength="8" size="10"/>
+                            <input name="dateTime" min="12:00" max="18:00" id="caseDate"  type="datetime-local" class="form-control caseDate_h" />
+                        </td>
+                        <td><button type="button" name="add" id="add" class="btn btn-success">Add City</button></td>
+                    </tr>
+                </table>
+                <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" disabled = "true" />
+                <input type="button" name="save" id="save" class="btn btn-info" value="Save Map" disabled = "true"/>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="respons-table">
+    <table class="table table-striped">
+        <tbody id = "tbody">
+        <tr class="table-active">
+            <th>City</th>
+            <th>Cod</th>
+            <th>Temperature</th>
+            <th>clouds</th>
+            <th>Data & Time</th>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<div id="mymodal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form class="tagForm" id="tag-form">
+                <div class="modal-body">
+                    <label for="tagName">Route Name: </label>
+                    <input id="tagName" class="form-control" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="tag-form-submit" type="submit" class="btn btn-primary btn-add-tag" disabled = "true">Add Tag</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="history" id="history-route">
+    <button id="tag-history" type="submit" class="btn btn-primary btn-add-tag" >Show History</button>
+</div>
+<div class="respons-table">
+    <table class="table table-striped">
+        <tbody id = "t-route-body">
+        <tr class="table-active">
+            <th>Route Name</th>
+            <th>City List</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="apply-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form class="tagForm" id="applay-form">
+                <div class="modal-body" id = "apply-body">
+
+                    <div class="city-time-data" id = "time-city-data">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="aplay-form-submit" type="reset" class="btn btn-primary btn-add-tag" >Applay</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="delete-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form class="tagForm" id="delete-form">
+                <div class="modal-body">
+                    <label for="delete-name">Route Name: </label>
+                    <input id="delete-name" class="form-control" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="delete-form-submit" type="submit" class="btn btn-primary btn-add-tag" disabled = "true">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class = "md-3">
+    <label for="find-tag">Enter Route Name: </label>
+    <input id="find-tag" class="tag-control" type="text" />
+    <button id="find-update-btn" class="btn btn-primary btn-add-tag" disabled = "true">Update</button>
+    <label for="apply-tag">Enter Route Name: </label>
+    <input id="apply-tag" class="tag-control" type="text" />
+    <button id="find-apply-btn" class="btn btn-primary btn-add-tag" disabled = "true">Apply</button>
+    <button id = "dekete-btn" class="btn btn-primary btn-add-tag">Delete</button>
+</div>
+<div id="update-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form class="tagFormUpdate" id="abdate-update-form">
+                <div class="modal-body-update" id="body-update-form">
+                </div>
+                <div id = "inputs-body" class = "md-3">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="update-form-submit" type="submit" class="btn btn-primary btn-add-tag" >Update</button>
+                    <button id="add-city-form-submit" type="button" class="btn btn-primary btn-add-tag" >Add new City</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
