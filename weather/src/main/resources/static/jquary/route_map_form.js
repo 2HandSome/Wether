@@ -57,22 +57,14 @@ $(document).ready(function(){
     $('#cityText').on('keypress keyup keydown', function () {
         if ($('#cityText').val() == "" ) {
             $('#save').prop('disabled', true);
-        }
-        else {
-            $('#save').prop('disabled', false);
-        }
-    });
-
-
-    $('#cityText').on('keypress keyup keydown', function () {
-        console.log($('#cityText').val());
-        if ($('#caseDate').val() == "" ) {
             $('#submit').prop('disabled', true);
         }
         else {
+            $('#save').prop('disabled', false);
             $('#submit').prop('disabled', false);
         }
     });
+
 
     $('#tagName').on('keypress keyup keydown', function () {
         if ($('#tagName').val() == "" ) {
